@@ -12,15 +12,16 @@
 
 int main()
 {
-    siftPoint_toshow("..\\lena.jpg",400); // 
+    siftPoint_toshow("..\\lena.jpg", 400); // SIFT特征点检测
 
     detectAruco("..\\Camera1.png", 22); // 识别Aruco码
 
     Eigen::Matrix3f rotation_mat;
+    Eigen::Vector3f translation_mat(-93.8982f, -10.6360f, -28.6675f);
     Eigen::Vector3f euler_rad;
-    rotation_mat << -0.02697f, -0.96295f, 0.268318f,
-        -0.98587f, 0.07001f, 0.15214f,
-        -0.16529f, -0.26042f, -0.95123f;
+    rotation_mat << 0.9941f, 0.1086f, -0.0071f,
+        -0.1085f, 0.9940f, 0.0136f,
+        0.0085f, -0.0127f, 0.9999f;
 
     euler_rad = Mat_Rzyx(rotation_mat);
     std::cout << "Rotation Mat" << std::endl;
@@ -58,6 +59,14 @@ int main()
               << Mat2_inv << std::endl;
     std::cout << "Mat_origin * Mat_inv" << std::endl
               << Mat2 * Mat2_inv << std::endl;
+    
+    // note 罗德里格斯转换 旋转向量转旋转矩阵
+    cv::Mat_<double> Rot_Vec = (cv::Mat_<double>(3, 1) << -0.1342, -0.0318, -0.4398);
+    cv::Mat Rot_Mat;
+    cv::Rodrigues(Rot_Vec,Rot_Mat);
+    std::cout << "Rot_Vec To Rot_Mat" << std::endl
+              << Rot_Mat << std::endl;
+
 
     return 0;
 }
