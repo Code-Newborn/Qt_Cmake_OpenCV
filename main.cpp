@@ -12,9 +12,9 @@
 
 int main()
 {
-    siftPoint_toshow("..\\lena.jpg", 400); // SIFT特征点检测
+    siftPoint_toshow(".\\lena.jpg", 400); // SIFT特征点检测
 
-    detectAruco("..\\Camera1.png", 22); // 识别Aruco码
+    detectAruco(".\\Camera1.png", 22); // 识别Aruco码
 
     Eigen::Matrix3f rotation_mat;
     Eigen::Vector3f translation_mat(-93.8982f, -10.6360f, -28.6675f);

@@ -12,7 +12,7 @@ include_directories(${Include_DIR})
 # include_directories(${CMAKE_CURRENT_SOURCE_DIR})   # 包含CmakeList.txt所在目录
 
 find_package(OpenCV
-        PATHS D:\\OpenCV-4.5.0-withContribNonfree-VS2022-VScode # 指定第三方Opencv库的OpenCVConfig.cmake所在路径
+        PATHS D:\\OpenCV-4.5.0-withContribNonfree-MinGW730-Qt # 指定第三方Opencv库的OpenCVConfig.cmake所在路径
         NO_DEFAULT_PATH
         REQUIRED)
 if (OpenCV_FOUND)
@@ -22,7 +22,7 @@ else()
     message("OpenCV not found, so we won't build the project.")
 endif()
 
-SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}) # 指定.exe文件输出路径为CmakeList.txt所在目录
+SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}) # 指定.exe文件输出路径为CmakeList.txt所在目录，.exe会作为相对路径的参考
 
 
 #指定.cpp源文件列表并存于变量 DIR_SRCS
@@ -31,7 +31,7 @@ file(GLOB  SRCS_LIST
     ./src/*.cpp
 )
 add_executable(${PROJECT_NAME} ${SRCS_LIST}) # 基于指定的源文件，创建可执行文件
-target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS} ) # 链接 目标和其依赖项所要使用的库。
+target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS} ) # 链接 目标和其依赖项所要使用的库。（需要将D:\OpenCV-4.5.0-withContribNonfree-MinGW730-Qt\x64\mingw\bin加入环境变量path）
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

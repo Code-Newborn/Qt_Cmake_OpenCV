@@ -13,3 +13,4 @@ _deps
 build/
 Debug/
 Release/
+*.exe
