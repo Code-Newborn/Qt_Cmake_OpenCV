@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0) # 要求cmake的最小版本。
-project(opencv_vs_cmake VERSION 0.1.0)# 定义工程名称
+project(Qt_Cmake_OpenCV VERSION 0.1.0)# 定义工程名称
 
 #指定.h头文件目录列表
-set(Include_DIR 
-    ./Eigen 
+set(Include_DIR
+    ./Eigen
     ./include
     )
 
